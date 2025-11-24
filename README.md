@@ -11,6 +11,7 @@ Intuitive, interactive Games For Toddlers to play on touch screen.
 |[Sort Alphabet](https://arun-ks.github.io/ToddlerGames/SortAlphabets.html) | Click on alphabet in correct sequence  | +3 years |
 |[Spin Letters](https://arun-ks.github.io/ToddlerGames/SpinLetters.html) | Spin Coin to see a new letter of the alphabet | +2 years |
 |[Line Drawing](https://arun-ks.github.io/ToddlerGames/LineDrawing.html) | Use finger to draw lines on screen. If you do not draw for 3 consecutive seconds, the screen will be cleared. | +1.5 years |
+|[Word Floater](https://arun-ks.github.io/ToddlerGames/WordFloater.html) | Familiar words floating around in screen | +3 years |
 |TBD | Make balls/snowflake? bounce by shaking the screen  | +1.5 years |
 |TBD | Keyboard piano, click a key to hear randomly assigned sounds  | +2 years |
 |TBD | Hold screen for few seconds  | +4 years |
@@ -150,6 +151,16 @@ Create a simple HTML5 game for toddler using a canvas element that allows users 
 - The line should have a double thickness of 20 pixels, and different sections of the line should have different colors instead of the entire line changing color.
 - The background color of the page should be light gray (#f0f0f0).
 
+```
+</details>
+
+<details closed>
+<summary>ChatGPT prompt to generate Word Floater  </summary>
+
+```
+I need to create a visualization in which colorful words will fall from the top of the screen or move from left to right (or vice-versa). There should be at most 4-5 words on screen at a time.
+When the words reach the other end, they should pop out. This is being made for 3-4 old kids who like to see words.
+The intention is to run this on big TV screen. The list of words should be customizable and should be able to handle 100s of words in 2-3 separate lists separated by themes.
 ```
 </details>
 
