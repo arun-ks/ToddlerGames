@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Word Floater</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #dff3ff, #ffffff);
+    font-family: 'Comic Sans MS', Arial, sans-serif;
+  }
+  #controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+  label { display: inline-block; margin-right: 12px; }
+  .word {
+    position: absolute;
+    white-space: nowrap;
+    font-weight: bold;
+    user-select: none;
+    pointer-events: none;
+    animation-timing-function: linear;
+  }
+</style>
+</head>
+<body>
+
+<div id="controls">
+  <label><input type="checkbox" id="themeFood" checked /> Food</label>
+  <label><input type="checkbox" id="themeAnimals" checked /> Animals/Birds</label>
+  <label><input type="checkbox" id="themePhrases" checked /> General Phrases</label>
+</div>
+
+<script>
+// Word lists
+const foodWords = [
+  'Apple','Banana','Bread', 'Soup', 'Carrot','Broccoli','Grapes','Strawberry','Mango','Potato','Tomato','Pea','Orange','Pineapple','Watermelon','Kiwi','Cucumber','Lettuce','Spinach','Pumpkin','Corn','Papaya','Blueberry','Avocado','Pear','Apricot','Cherry','Cabbage','Cauliflower','Bean','Onion','Durian','Dragon Fruit'
+];
+
+const animalWords = [
+  'Cat','Dog','Lion','Tiger','Elephant','Duck','Bird','Fish','Horse','Rabbit','Giraffe','Zebra','Monkey','Bear','Frog','Turtle','Butterfly','Eagle','Owl','Penguin','Kangaroo','Sheep','Goat','Cow','Chicken','Sparrow','Dolphin','Whale','Fox','Donkey'
+];
+
+const phraseWords = [
+  'Hello!', 'Thank you', 'Sorry', 'My name is...', 'I like...', 'I live here', 'Good job!', 'Try again', 'Come here', 'Let’s play!','Swimming pool', 'Playground', 'Car coming'];
+
+// Config
+const maxWords = 7;
+const minSize = 40;
+const maxSize = 90;
+const screenW = window.innerWidth;
+const screenH = window.innerHeight;
+
+function random(min, max) { return Math.random() * (max - min) + min; }
+
+function pickWord() {
+  const activeThemes = [];
+  if (document.getElementById('themeFood').checked) activeThemes.push(foodWords);
+  if (document.getElementById('themeAnimals').checked) activeThemes.push(animalWords);
+  if (document.getElementById('themePhrases').checked) activeThemes.push(phraseWords);
+
+  if (activeThemes.length === 0) return null;
+
+  const list = activeThemes[Math.floor(Math.random() * activeThemes.length)];
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+function spawnWord() {
+  if (document.querySelectorAll('.word').length >= maxWords) return;
+
+  const text = pickWord();
+  if (!text) return;
+
+  const el = document.createElement('div');
+  el.className = 'word';
+  el.textContent = text;
+
+  const size = random(minSize, maxSize);
+  el.style.fontSize = size + 'px';
+  el.style.color = `hsl(${Math.floor(Math.random()*360)}, 80%, 50%)`;
+
+  const startX = random(0, screenW - 200);
+  const duration = random(6, 12);
+  const drift = Math.random() < 0.5 ? 'vertical' : 'horizontal';
+
+  el.style.left = startX + 'px';
+
+  document.body.appendChild(el);
+
+  if (drift === 'vertical') {
+    el.style.top = '-100px';
+    el.animate([
+      { transform: 'translateY(0px)' },
+      { transform: `translateY(${screenH + 200}px)` }
+    ], {
+      duration: duration * 1000,
+      iterations: 1
+    }).onfinish = () => el.remove();
+  } else {
+    const startY = random(0, screenH - 100);
+    el.style.top = startY + 'px';
+    const dir = Math.random() < 0.5 ? 1 : -1;
+    const endX = dir === 1 ? screenW + 300 : -300;
+
+    el.animate([
+      { transform: 'translateX(0px)' },
+      { transform: `translateX(${endX - startX}px)` }
+    ], {
+      duration: duration * 1000,
+      iterations: 1
+    }).onfinish = () => el.remove();
+  }
+}
+
+setInterval(spawnWord, 1200);
+</script>
+
+</body>
+</html>
