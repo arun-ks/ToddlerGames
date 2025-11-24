@@ -46,15 +46,12 @@ const foodWords = ['Apple', 'Apricot', 'Avocado', 'Banana', 'Bean', 'Blueberry',
 
 const animalWords = ['Bear', 'Bird', 'Butterfly', 'Cat', 'Chicken', 'Cow', 'Dog', 'Dolphin', 'Donkey', 'Duck', 'Eagle', 'Elephant', 'Fish', 'Fox', 'Frog', 'Giraffe', 'Goat', 'Horse', 'Kangaroo', 'Lion', 'Monkey', 'Owl', 'Penguin', 'Rabbit', 'Sheep', 'Sparrow', 'Tiger', 'Turtle', 'Whale', 'Zebra'];
 
-const phraseWords = ['Car coming', 'Come here', 'Dad', 'Good job!', 'Hello!', 'I like...', 'Koko', 'Let\'s play!', 'Milan', 'Mom', 'My name is...', 'Playground', 'Sorry', 'Swimming pool', 'Thank you', 'Try again']
-
-
-
+const phraseWords = ['Basketball', 'Blippi', 'Car coming', 'Come here', 'Dad', 'Good job!', 'Hello!', 'I like...', 'Koko', 'Let\'s play!', 'Meekah', 'Milan', 'Mom', 'My name is...', 'Playground', 'Sorry', 'Swimming pool', 'Thank you', 'Try again', '3 years old'];
 
 // Config
-const maxWords = 5;
+const maxWords = 8;
 const minSize = 80;
-const maxSize = 180;
+const maxSize = 120;
 const screenW = window.innerWidth;
 const screenH = window.innerHeight;
 
@@ -84,9 +81,17 @@ function spawnWord() {
 
   const size = random(minSize, maxSize);
   el.style.fontSize = size + 'px';
+  // Auto-shrink if word is wider than screen
+  document.body.appendChild(el);
+  const rect = el.getBoundingClientRect();
+  if (rect.width > window.innerWidth * 0.9) {
+    const scale = (window.innerWidth * 0.9) / rect.width;
+    el.style.fontSize = Math.floor(size * scale) + 'px';
+  }
+  document.body.removeChild(el);
   el.style.color = `hsl(${Math.floor(Math.random()*360)}, 80%, 50%)`;
 
-  const startX = random(0, screenW - 200);
+  const startX = random(0, screenW - 300);
   const duration = random(6, 12);
   const drift = Math.random() < 0.5 ? 'vertical' : 'horizontal';
 
