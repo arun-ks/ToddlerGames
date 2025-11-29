@@ -17,6 +17,19 @@ Intuitive, interactive Games For Toddlers to play on touch screen.
 |TBD | Hold screen for few seconds  | +4 years |
 
 
+## Simple Interactive Games For Toddlers
+
+Intuitive, interactive Games For Toddlers to play on touch screen
+
+| Game | Details |
+|------|---------|
+| ![Burst Balloons Preview](images/burst-balloons.gif) | **Name:** [Burst Balloons](https://arun-ks.github.io/ToddlerGames/BurstBaloons.html)<br>**Game Play:** Pop Balls falling from top of the screen<br>**Age level:** +1.5 years+ |
+| ![Sort Alphabet Preview](images/sort-alphabet.gif) | **Name:** [Sort Alphabet](https://arun-ks.github.io/ToddlerGames/SortAlphabets.html)<br>**Game Play:** Click on alphabet in correct sequence<br>**Age level:** +3 years+ |
+| ![Spin Letters Preview](images/spin-letters.gif) | **Name:** [Spin Letters](https://arun-ks.github.io/ToddlerGames/SpinLetters.html)<br>**Game Play:** Spin Coin to see a new letter of the alphabet<br>**Age level:** +2 years+ |
+| ![Line Drawing Preview](images/line-drawing.gif) | **Name:** [Line Drawing](https://arun-ks.github.io/ToddlerGames/LineDrawing.html)<br>**Game Play:** Use finger to draw lines on screen. If you do not draw for 3 consecutive seconds, the screen will be cleared.<br>**Age level:** +1.5 years+ |
+| ![Word Floater Preview](images/word-floater.gif) | **Name:** [Word Floater](https://arun-ks.github.io/ToddlerGames/WordFloater.html)<br>**Game Play:** Familiar words floating around the screen.<br>**Age level:** +3 years+ |
+| | **Name:** TBD<br>**Game Play:** Hold screen for few seconds<br>**Age level:** 4 years+ |
+
 ## Installation
 These use single page HTML files along with some small mp3s taken from [Pixabay](https://pixabay.com/). 
 
