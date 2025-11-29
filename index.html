@@ -1,71 +1,300 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title>Games for Toddlers</title>      
-      <style>
-           table {
-             border-collapse: collapse;
-             width: 100%;
-           }
-           
-           th, td {
-             padding: 8px;
-             text-align: left;
-             border-bottom: 1px solid #DDD;
-           }
-           
-           tr:hover {background-color: #D6EEEE;}
-      </style>
-   </head>
-   <body>
-        <h1 id="simple-interactive-games-for-toddlers">Simple Interactive Games For Toddlers</h1>
-        <p>Intuitive, interactive Games For Toddlers to play on touch screen</p>
-        <table>
-               <thead>
-                    <tr>
-                         <th>Name</th>
-                         <th>Game Play</th>
-                         <th>Age level</th>
-                    </tr>
-               </thead>        
-         
-               
-               <tbody>
-                    <tr>
-                         <td><a href="https://arun-ks.github.io/ToddlerGames/BurstBaloons.html">Burst Balloons</a></td>
-                         <td>Pop Balls falling from top of the screen</td>
-                         <td>+1.5 years+</td>
-                    </tr>
-                    <tr>
-                         <td><a href="https://arun-ks.github.io/ToddlerGames/SortAlphabets.html">Sort Alphabet</a></td>
-                         <td>Click on alphabet in correct sequence</td>
-                         <td>+3 years+</td>
-                    </tr>
-                    <tr>
-                         <td><a href="https://arun-ks.github.io/ToddlerGames/SpinLetters.html">Spin Letters</a></td>
-                         <td>Spin Coin to see a new letter of the alphabet</td>
-                         <td>+2 years+</td>
-                    </tr>      
-                    <tr>
-                         <td><a href="https://arun-ks.github.io/ToddlerGames/LineDrawing.html">Line Drawing</a></td>
-                         <td>Use finger to draw lines on screen. If you do not draw for 3 consecutive seconds, the screen will be cleared.</td>
-                         <td>+1.5 years+</td>
-                    </tr>             
-                    <tr>
-                         <td><a href="https://arun-ks.github.io/ToddlerGames/WordFloater.html">Word Floater</a></td>
-                         <td>Familiar words floating around the screen.</td>
-                         <td>+3 years+</td>
-                    </tr>                        
-                    <tr>
-                         <td>TBD</td>
-                         <td>Hold screen for few seconds</td>
-                         <td>4 years+</td>
-                    </tr>
-               </tbody>
-        </table>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games for Toddlers</title>      
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            padding: 15px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        
+        .toggle-label {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .game-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            min-height: 140px;
+        }
+        
+        .game-card:hover, .game-card:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            background-color: #f0f9ff;
+        }
+        
+        .game-preview {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: none; /* Hidden by default */
+        }
+        
+        .game-preview.show {
+            display: block;
+        }
+        
+        .game-name {
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .game-description {
+            margin-bottom: 10px;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .game-age {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .coming-soon {
+            background-color: #f8f9fa;
+            border: 2px dashed #dee2e6;
+        }
+        
+        .coming-soon .game-name {
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .games-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-card {
+                padding: 18px;
+                min-height: 130px;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .games-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="simple-interactive-games-for-toddlers">Simple Interactive Games For Toddlers</h1>
+    <p>Intuitive, interactive Games For Toddlers to play on touch screen</p>
+    
+    <div class="toggle-container">
+        <span class="toggle-label">Show Game Previews</span>
+        <label class="toggle-switch">
+            <input type="checkbox" id="previewToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+    
+    <div class="games-container" id="gamesContainer">
+        <!-- Games will be inserted here by JavaScript -->
+    </div>
+
+    <script>
+        let showPreviews = false;
+        
+        const games = [
+            {
+                name: "Burst Balloons",
+                description: "Pop Balls falling from top of the screen",
+                age: "+1.5 years+",
+                url: "https://arun-ks.github.io/ToddlerGames/BurstBaloons.html",
+                preview: "images/burst-balloons.gif"
+            },
+            {
+                name: "Sort Alphabet",
+                description: "Click on alphabet in correct sequence",
+                age: "+3 years+",
+                url: "https://arun-ks.github.io/ToddlerGames/SortAlphabets.html",
+                preview: "images/sort-alphabet.gif"
+            },
+            {
+                name: "Spin Letters",
+                description: "Spin Coin to see a new letter of the alphabet",
+                age: "+2 years+",
+                url: "https://arun-ks.github.io/ToddlerGames/SpinLetters.html",
+                preview: "images/spin-letters.gif"
+            },
+            {
+                name: "Line Drawing",
+                description: "Use finger to draw lines on screen. If you do not draw for 3 consecutive seconds, the screen will be cleared.",
+                age: "+1.5 years+",
+                url: "https://arun-ks.github.io/ToddlerGames/LineDrawing.html",
+                preview: "images/line-drawing.gif"
+            },
+            {
+                name: "Word Floater",
+                description: "Familiar words floating around the screen.",
+                age: "+3 years+",
+                url: "https://arun-ks.github.io/ToddlerGames/WordFloater.html",
+                preview: "images/word-floater.gif"
+            },
+            {
+                name: "TBD",
+                description: "Hold screen for few seconds",
+                age: "4 years+",
+                url: null, //     coming soon
+                preview: null // coming soon 
+            }
+        ];
+
+        function togglePreviews() {
+            showPreviews = !showPreviews;
+            const previewImages = document.querySelectorAll('.game-preview');
+            
+            previewImages.forEach(img => {
+                if (showPreviews) {
+                    img.classList.add('show');
+                } else {
+                    img.classList.remove('show');
+                }
+            });
+            document.getElementById('previewToggle').checked = showPreviews;
+            localStorage.setItem('showGamePreviews', showPreviews);
+        }
+
+        function createGameCards() {
+            const container = document.getElementById('gamesContainer');
+            
+            games.forEach(game => {
+                const gameCard = document.createElement('a');
+                
+                if (game.url) {
+                    gameCard.href = game.url;
+                    gameCard.target = "_blank";
+                } else {
+                    gameCard.classList.add('coming-soon');
+                    gameCard.href = "#";
+                    gameCard.onclick = (e) => e.preventDefault();
+                }
+                
+                gameCard.className = 'game-card';
+                
+                // Create preview image if available
+                const previewHTML = game.preview 
+                    ? `<img src="${game.preview}" alt="${game.name} Preview" class="game-preview ${showPreviews ? 'show' : ''}">`
+                    : '';
+                
+                gameCard.innerHTML = `
+                    ${previewHTML}
+                    <div class="game-name">${game.name}</div>
+                    <div class="game-description">${game.description}</div>
+                    <div class="game-age">${game.age}</div>`;
+                
+                container.appendChild(gameCard);
+            });
+        }
 
 
-   </body>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedPreference = localStorage.getItem('showGamePreviews');
+            if (savedPreference !== null) {
+                showPreviews = savedPreference === 'true';
+            }
+            
+            document.getElementById('previewToggle').addEventListener('change', togglePreviews);
+            document.getElementById('previewToggle').checked = showPreviews;
+            
+            createGameCards();
+        });
+    </script>
+</body>
 </html>
-
