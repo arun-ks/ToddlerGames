@@ -18,10 +18,10 @@ Intuitive, interactive Games For Toddlers to play on touch screen.
 | | **Name:** TBD<br>**Game Play:** Keyboard piano, click a key to hear randomly assigned sound<br>**Age level:** +1.5 years |
 
 
-
-
 ## Installation
 These use single page HTML files along with some small mp3s taken from [Pixabay](https://pixabay.com/). 
+
+The gifs were generated using [EzGIF](https://ezgif.com/) using screenshots recorded by [Microsoft powerpoint](https://www.microsoft.com/en-my/microsoft-365/powerpoint).
 
 Download all files in this repo & click on index.html to start your journey.
 
