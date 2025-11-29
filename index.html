@@ -29,64 +29,6 @@
             color: #666;
         }
         
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-        
-        .toggle-label {
-            font-weight: bold;
-            color: #555;
-        }
-        
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        
         .games-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -119,11 +61,6 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 12px;
-            display: none; /* Hidden by default */
-        }
-        
-        .game-preview.show {
-            display: block;
         }
         
         .game-name {
@@ -176,21 +113,11 @@
     <h1 id="simple-interactive-games-for-toddlers">Simple Interactive Games For Toddlers</h1>
     <p>Intuitive, interactive Games For Toddlers to play on touch screen</p>
     
-    <div class="toggle-container">
-        <span class="toggle-label">Show Game Previews</span>
-        <label class="toggle-switch">
-            <input type="checkbox" id="previewToggle">
-            <span class="slider"></span>
-        </label>
-    </div>
-    
     <div class="games-container" id="gamesContainer">
         <!-- Games will be inserted here by JavaScript -->
     </div>
 
     <script>
-        let showPreviews = false;
-        
         const games = [
             {
                 name: "Burst Balloons",
@@ -231,26 +158,11 @@
                 name: "TBD",
                 description: "Hold screen for few seconds",
                 age: "4 years+",
-                url: null, //     coming soon
-                preview: null // coming soon 
+                url: null,    // Coming soon
+                preview: null // Coming soon 
             }
         ];
-
-        function togglePreviews() {
-            showPreviews = !showPreviews;
-            const previewImages = document.querySelectorAll('.game-preview');
-            
-            previewImages.forEach(img => {
-                if (showPreviews) {
-                    img.classList.add('show');
-                } else {
-                    img.classList.remove('show');
-                }
-            });
-            document.getElementById('previewToggle').checked = showPreviews;
-            localStorage.setItem('showGamePreviews', showPreviews);
-        }
-
+  
         function createGameCards() {
             const container = document.getElementById('gamesContainer');
             
@@ -268,9 +180,8 @@
                 
                 gameCard.className = 'game-card';
                 
-                // Create preview image if available
                 const previewHTML = game.preview 
-                    ? `<img src="${game.preview}" alt="${game.name} Preview" class="game-preview ${showPreviews ? 'show' : ''}">`
+                    ? `<img src="${game.preview}" alt="${game.name} Preview" class="game-preview">`
                     : '';
                 
                 gameCard.innerHTML = `
@@ -283,18 +194,7 @@
             });
         }
 
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedPreference = localStorage.getItem('showGamePreviews');
-            if (savedPreference !== null) {
-                showPreviews = savedPreference === 'true';
-            }
-            
-            document.getElementById('previewToggle').addEventListener('change', togglePreviews);
-            document.getElementById('previewToggle').checked = showPreviews;
-            
-            createGameCards();
-        });
+        document.addEventListener('DOMContentLoaded', createGameCards);
     </script>
 </body>
 </html>
