@@ -5,21 +5,6 @@ Intuitive, interactive Games For Toddlers to play on touch screen.
 **You can use the live version [here](https://arun-ks.github.io/ToddlerGames/).**
 
 ## Game list
-| Name | Game Play | Age level |
-|-------|----------|------------|
-|[Burst Balloons](https://arun-ks.github.io/ToddlerGames/BurstBaloons.html) | Pop Balls falling from top of the screen | +1.5 years | 
-|[Sort Alphabet](https://arun-ks.github.io/ToddlerGames/SortAlphabets.html) | Click on alphabet in correct sequence  | +3 years |
-|[Spin Letters](https://arun-ks.github.io/ToddlerGames/SpinLetters.html) | Spin Coin to see a new letter of the alphabet | +2 years |
-|[Line Drawing](https://arun-ks.github.io/ToddlerGames/LineDrawing.html) | Use finger to draw lines on screen. If you do not draw for 3 consecutive seconds, the screen will be cleared. | +1.5 years |
-|[Word Floater](https://arun-ks.github.io/ToddlerGames/WordFloater.html) | Familiar words floating around in screen | +3 years |
-|TBD | Make balls/snowflake? bounce by shaking the screen  | +1.5 years |
-|TBD | Keyboard piano, click a key to hear randomly assigned sounds  | +2 years |
-|TBD | Hold screen for few seconds  | +4 years |
-
-
-## Simple Interactive Games For Toddlers
-
-Intuitive, interactive Games For Toddlers to play on touch screen
 
 | Game | Details |
 |------|---------|
@@ -29,6 +14,11 @@ Intuitive, interactive Games For Toddlers to play on touch screen
 | ![Line Drawing Preview](images/line-drawing.gif) | **Name:** [Line Drawing](https://arun-ks.github.io/ToddlerGames/LineDrawing.html)<br>**Game Play:** Use finger to draw lines on screen. If you do not draw for 3 consecutive seconds, the screen will be cleared.<br>**Age level:** +1.5 years+ |
 | ![Word Floater Preview](images/word-floater.gif) | **Name:** [Word Floater](https://arun-ks.github.io/ToddlerGames/WordFloater.html)<br>**Game Play:** Familiar words floating around the screen.<br>**Age level:** +3 years+ |
 | | **Name:** TBD<br>**Game Play:** Hold screen for few seconds<br>**Age level:** 4 years+ |
+| | **Name:** TBD<br>**Game Play:** Make balls/snowflake? bounce by shaking the screen<br>**Age level:** +1.5 years |
+| | **Name:** TBD<br>**Game Play:** Keyboard piano, click a key to hear randomly assigned sound<br>**Age level:** +1.5 years |
+
+
+
 
 ## Installation
 These use single page HTML files along with some small mp3s taken from [Pixabay](https://pixabay.com/). 
